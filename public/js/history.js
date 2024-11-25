@@ -34,18 +34,23 @@ onAuthStateChanged(auth, (user) => {
           sheetLink.textContent = job.sheetName || `NU Result`;
           sheetLink.className = 'text-blue-500 hover:underline block mb-2';
 
-          let timestamp = job.completedAt ? new Date(job.completedAt) : "Currently Running";
-          try{
-            timestamp = "Time: " + timestamp.toLocaleString(); // Format the timestamp
-          } catch {}
-
-          if(job.error) {
-            timestamp = "Scraping ended due to error!";
+          let timeInfo;
+          if (job.completedAt) {
+            const completedDate = new Date(job.completedAt);
+            timeInfo = "Time: " + (isNaN(completedDate.getTime()) ? "Invalid Date" : completedDate.toLocaleString());
+          } else {
+            const createdAt = new Date(job.createdAt);
+            timeInfo = `Started at ${(isNaN(createdAt.getTime()) ? "Invalid Date" : createdAt.toLocaleString())} | Currently Running`;
+          }
+          if (job.error) {
+            timeInfo += " | [ERROR]";
           }
           
-          listItem.innerHTML += `<p class="text-gray-600">${timestamp}</p>`; // Add timestamp
+          const timeInfoElement = document.createElement('p');
+          timeInfoElement.className = 'text-gray-600';
+          timeInfoElement.textContent = timeInfo;
 
-
+          listItem.appendChild(timeInfoElement);
           listItem.prepend(sheetLink); // Add the sheet link at the beginning
           historyList.appendChild(listItem);
 
