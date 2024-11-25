@@ -1,0 +1,39 @@
+
+<!-- history.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NU Result Scraper - History</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex">
+        <aside class="w-1/4 bg-white p-4 shadow">
+          <ul class="space-y-4">
+            <li><a href="home.html" class="text-blue-500 hover:text-blue-700">Home</a></li>
+            <li><a href="history.html" class="text-blue-500 hover:text-blue-700">History</a></li>
+          </ul>
+        </aside>
+
+      <main class="w-3/4 p-4">
+          <div id="login-required" class="hidden">
+            <p>Please sign in to view your history.</p>
+          </div>
+          <h2 class="text-2xl font-bold mb-4">Scraping History</h2>
+
+          <div id="history-list">
+            <!-- History items will be loaded here -->
+            <p>Loading history...</p>
+          </div>
+        </main>
+      </div>
+  </div>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/history.js"></script>
+
+</body>
+</html>

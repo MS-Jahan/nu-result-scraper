@@ -1,0 +1,107 @@
+
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NU Result Scraper - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex">
+            <aside class="w-1/4 bg-white p-4 shadow">
+                <ul class="space-y-4">
+                    <li><a href="home.html" class="text-blue-500 hover:text-blue-700">Home</a></li>
+                    <li><a href="history.html" class="text-blue-500 hover:text-blue-700">History</a></li>
+                </ul>
+            </aside>
+
+            <main class="w-3/4 p-4">
+                <h2 class="text-2xl font-bold mb-4">Scrape NU Results</h2>
+                
+                <div id="login-required" class="hidden">
+                    <p>Please sign in to view your history.</p>
+                </div>
+
+                <!-- home.html (Form implementation) -->
+                <form id="scraper-form" class="bg-white p-6 shadow rounded-lg">
+                    <div class="mb-4">
+                        <label for="department" class="block text-gray-700 font-bold mb-2">Department:</label>
+                        <select id="department" name="department" class="w-full border rounded py-2 px-3" required>
+                            <option value="">------------- Department -------------</option>
+                            <option value="CSE">[CSE] Computer Scicence & Engineering</option>
+                            <option value="ECE">[ECE] Electronics and Communication Engineering</option>
+                            <option value="BBA">[BBA] Bachelor of Business Administration</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="regNumLowerLimit" class="block text-gray-700 font-bold mb-2">Registration Number
+                            Lower Limit:</label>
+                        <input type="text" id="regNumLowerLimit" name="regNumLowerLimit"
+                            class="w-full border rounded py-2 px-3" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="regNumUpperLimit" class="block text-gray-700 font-bold mb-2">Registration Number
+                            Upper Limit:</label>
+                        <input type="text" id="regNumUpperLimit" name="regNumUpperLimit"
+                            class="w-full border rounded py-2 px-3" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="college_code" class="block text-gray-700 font-bold mb-2">College Code
+                            (optional):</label>
+                        <input type="text" id="college_code" name="college_code"
+                            class="w-full border rounded py-2 px-3">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="exam_code" class="block text-gray-700 font-bold mb-2">Semester:</label>
+                        <select id="exam_code" name="exam_code" class="w-full border rounded py-2 px-3" required
+                            disabled>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="exam_year" class="block text-gray-700 font-bold mb-2">Exam Year:</label>
+                        <input type="text" id="exam_year" name="exam_year" class="w-full border rounded py-2 px-3"
+                            required>
+                    </div>
+
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Submit
+                    </button>
+                </form>
+
+
+                <div id="progress-container" class="mt-4 hidden">
+                    <div class="w-full bg-gray-200 rounded-full">
+                        <div id="progress-bar" class="bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <p id="status-text" class="text-sm mt-2">Scraping not started yet!</p>
+                    <p id="progress-text" class="text-sm mt-2">0/0</p>
+                    <p id="errors-text" class="text-sm mt-2"></p>
+                </div>
+
+                <div id="results-container" class="mt-8 hidden">
+                    <a id="sheet-link" href="#" target="_blank" rel="noopener noreferrer"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                        View Results in Google Sheet
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/home.js"></script>
+</body>
+
+</html>
