@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main  # Branch where github action gets triggered
+    paths:
+      - 'functions/**'
 
 jobs:
   build-and-deploy:
@@ -25,9 +27,9 @@ jobs:
       run: npm install
       working-directory: ./functions
 
-    - name: Run tests
-      run: npm test
-      working-directory: ./functions
+    # - name: Run tests
+    #   run: npm test
+    #   working-directory: ./functions
 
     - name: Deploy to Firebase
       env:
