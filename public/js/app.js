@@ -6,7 +6,18 @@ const signInButton = document.getElementById('sign-in-button');
 const signInContainer = document.getElementById('sign-in-container');
 const dashboardContainer = document.getElementById('dashboard-container');
 
+// Initialize the FirebaseUI Widget using Firebase.
+var ui = new firebaseui.auth.AuthUI(auth);
+var signInSuccessUrl = window.location.href + 'home.html';
+console.log(signInSuccessUrl);
 
+ui.start('#firebaseui-auth-container', {
+    signInSuccessUrl: signInSuccessUrl,
+    signInOptions: [
+        // List of OAuth providers supported.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    ],
+});
 
 // Function to handle sign-in
 function signIn() {
